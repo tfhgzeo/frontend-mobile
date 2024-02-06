@@ -1,11 +1,32 @@
 import React from "react";
-import { Text, View } from "react-native";
-import Clock from "../../components/Clock";
+import { Text, View,TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { PropsStack } from "../../types";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+//COMPONENTS
+import EpiCard from "../../components/EpiCard"
 
 const Epi: React.FC = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<PropsStack>>();
+
+  const solicitarEpi = () => {
+    navigation.navigate('SolicitarEpi');
+  };
+
   return (
-    <View className='flex flex-1 justify-center items-center '>
-      <Clock />
+    <View className='flex-1 mt-4 items-center '>
+        <EpiCard/>
+        <EpiCard/>
+        
+      
+      <View className="absolute mb-10 z-10 bottom-0 bg-primary p-4 w-11/12 rounded-lg ">
+      <TouchableOpacity onPress={solicitarEpi}>
+        <Text className="text-center text-white font-bold">
+          Solicitar EPI
+        </Text>
+      </TouchableOpacity>
+      </View>
     </View>
   )
 }

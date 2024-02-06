@@ -12,6 +12,8 @@ module.exports = {
         primary: '#00266F',
         error: '#E31003',
         text: '#414141',
+        secondary:'#DFE8FB',
+        subtitulo:'#868686',
         transparent: 'transparent' 
       },
       

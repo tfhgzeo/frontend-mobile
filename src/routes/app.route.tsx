@@ -1,82 +1,174 @@
-import React, { useContext } from "react";
-import { useHeaderHeight } from "@react-navigation/elements";
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import React from "react";
+import SvgUri from 'react-native-svg-uri';
+
 
 // SCREENS
-import Home from "../screens/Home";
+import Holerites from "../screens/Home";
 import Epi from "../screens/Epi";
 import Equipamento from "../screens/Equipamento";
+import SolicitarEpi from "../screens/SolicitarEpi";
+import SolicitarEquipamento from "../screens/SolicitarEquipamento";
+import Login from "../screens/Login";
+import EsqueceuSenha from "../screens/EsqueceuSenha";
+import PrimeiroAcesso from "../screens/PrimeiroAcesso";
+import Credencial from "../screens/Credencial";
 
+
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import { PropsStack, PropsTab } from "../types";
 
-const AppTabs = createBottomTabNavigator();
+const AppTabs = createBottomTabNavigator<PropsTab>();
+const AppStack = createNativeStackNavigator<PropsStack>();
 
 const AppRoutes: React.FC = () => {
   return (
+    <AppStack.Navigator
+    initialRouteName="Login"
+        screenOptions={{
+            headerShown: false,
+        }}
+    >
+      <AppStack.Screen
+        name="HoleriteTabs"
+        component={AppTabsScreen}
+      />
+      <AppStack.Screen
+      name="Credencial"
+      component={Credencial}
+      />
+    <AppStack.Screen
+        name="EsqueceuSenha"
+        component={EsqueceuSenha}
+      />
+    <AppStack.Screen
+        name="PrimeiroAcesso"
+        component={PrimeiroAcesso}
+      />
+
+            <AppStack.Screen
+        name="Login"
+        component={Login}
+      />
+      <AppStack.Screen
+        name="SolicitarEpi"
+        component={SolicitarEpi}
+        options={{ headerTitle: "Solicitar EPI" }}
+      />
+      <AppStack.Screen
+        name="SolicitarEquipamento"
+        component={SolicitarEquipamento}
+        options={{ headerTitle: "Solicitar Equipamento" }}
+      />
+      {/* Adicione outras telas aqui */}
+    </AppStack.Navigator>
+  );
+};
+
+const AppTabsScreen: React.FC = () => {
+  return (
     <AppTabs.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        tabBarHideOnKeyboard: true,
-        tabBarStyle: {
-          // backgroundColor: "#171626",
-        },
-      }}
+    initialRouteName="Holerite"
+    screenOptions={{
+      tabBarHideOnKeyboard: true,
+      tabBarStyle: {
+      },
+    }}
     >
       <AppTabs.Screen
-        name="Epi"
+        name="EPI"
         component={Epi}
         options={{
-          headerShown: false,
+          headerTitle: () => (<Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>EPI</Text>),
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return (
-                <MaterialIcon
-                  name="safety-goggles"
-                  size={size}
-                  color={color}
-                />
-              )
-            } else {
-              return (
-                <MaterialIcon
-                  name="safety-goggles"
-                  size={size}
-                  color={color}
-                />
-              )
-            }
-          }
-        }}
-      />
-      <AppTabs.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({ color, size, focused }) => {
-            if (focused) {
-              return (
-                <View className="bg-primary w-12 h-12">
-                  <Ionicons
-                    name="document-text"
-                    size={size}
-                    color={color}
+                <View >
+                  <SvgUri 
+                    width={size}
+                    height={size}
+                    source={require('../../assets/EpiFocus.svg')}
                   />
                 </View>
               )
             } else {
-              <Ionicons
-                name="document-text"
-                size={size}
-                color={color}
-              />
-
+              return (         <View >
+                  <SvgUri 
+                    width={size}
+                    height={size}
+                    source={require('../../assets/Epi.svg')}
+                  />
+                </View>
+              )
             }
           }
         }}
       />
-      <AppTabs.Screen name="Equipamento" component={Equipamento} />
+      <AppTabs.Screen
+        name="Holerite"
+        component={Holerites}
+        options={{
+          headerTitle: () => (<Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Holerite</Text>),
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused) {
+              return (
+                <View style={{ marginTop: -20 }} >
+                  <SvgUri 
+                    width={size*2}
+                    height={size*2}
+                    source={require('../../assets/HomeFocus.svg')}
+                  />
+                </View>
+              )
+            } else {
+              return (
+                <View style={{ marginTop: -20 }}>
+                  <SvgUri 
+                    width={size*2}
+                    height={size*2}
+                    source={require('../../assets/Home.svg')}
+                  />
+                </View>
+              )
+            }
+          }
+        }}
+      />
+      <AppTabs.Screen 
+      name="Equipamento" 
+      component={Equipamento} 
+              options={{
+          headerTitle: () => (<Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Equipamento</Text>),
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused) {
+              return (
+                <View  >
+                  <SvgUri 
+                    width={size}
+                    height={size}
+                    source={require('../../assets/EquipamentoFocus.svg')}
+                  />
+                </View>
+              )
+            } else {
+              return (
+                <View >
+                  <SvgUri 
+                    width={size}
+                    height={size}
+                    source={require('../../assets/Equipamento.svg')}
+                  />
+                </View>
+              )
+            }
+          }
+        }}
+        />
     </AppTabs.Navigator>
   )
 }
