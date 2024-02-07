@@ -12,6 +12,10 @@ import Login from "../screens/Login";
 import EsqueceuSenha from "../screens/EsqueceuSenha";
 import PrimeiroAcesso from "../screens/PrimeiroAcesso";
 import Credencial from "../screens/Credencial";
+import Verificacao from "../screens/Verificacao";
+import EnviarCod from "../screens/EnviarCod";
+import AlterarSenha from "../screens/AlterarSenha";
+import SenhaRedefinida from "../screens/SenhaRedefinida";
 
 
 
@@ -26,41 +30,58 @@ const AppStack = createNativeStackNavigator<PropsStack>();
 const AppRoutes: React.FC = () => {
   return (
     <AppStack.Navigator
-    initialRouteName="Login"
-        screenOptions={{
-            headerShown: false,
-        }}
+      initialRouteName="Login"
+      screenOptions={{
+        headerShown: false,
+      }}
     >
       <AppStack.Screen
         name="HoleriteTabs"
         component={AppTabsScreen}
       />
       <AppStack.Screen
-      name="Credencial"
-      component={Credencial}
+        name="Credencial"
+        component={Credencial}
       />
-    <AppStack.Screen
+      <AppStack.Screen
         name="EsqueceuSenha"
         component={EsqueceuSenha}
       />
-    <AppStack.Screen
+      <AppStack.Screen
+        name="Verificacao"
+        component={Verificacao}
+      />
+      <AppStack.Screen
+        name="EnviarCod"
+        component={EnviarCod}
+      />
+      <AppStack.Screen
+        name="AlterarSenha"
+        component={AlterarSenha}
+      />
+      <AppStack.Screen
+        name="SenhaRedefinida"
+        component={SenhaRedefinida}
+      />
+
+      <AppStack.Screen
         name="PrimeiroAcesso"
         component={PrimeiroAcesso}
       />
 
-            <AppStack.Screen
+      <AppStack.Screen
         name="Login"
         component={Login}
       />
       <AppStack.Screen
         name="SolicitarEpi"
         component={SolicitarEpi}
-        options={{ headerTitle: "Solicitar EPI" }}
+        options={{ headerTitle: "Solicitar EPI",headerShown: true }}
       />
       <AppStack.Screen
         name="SolicitarEquipamento"
         component={SolicitarEquipamento}
-        options={{ headerTitle: "Solicitar Equipamento" }}
+        options={{ headerTitle: "Solicitar Equipamento",headerShown: true }}
       />
       {/* Adicione outras telas aqui */}
     </AppStack.Navigator>
@@ -70,12 +91,12 @@ const AppRoutes: React.FC = () => {
 const AppTabsScreen: React.FC = () => {
   return (
     <AppTabs.Navigator
-    initialRouteName="Holerite"
-    screenOptions={{
-      tabBarHideOnKeyboard: true,
-      tabBarStyle: {
-      },
-    }}
+      initialRouteName="Holerite"
+      screenOptions={{
+        tabBarHideOnKeyboard: true,
+        tabBarStyle: {
+        },
+      }}
     >
       <AppTabs.Screen
         name="EPI"
@@ -87,7 +108,7 @@ const AppTabsScreen: React.FC = () => {
             if (focused) {
               return (
                 <View >
-                  <SvgUri 
+                  <SvgUri
                     width={size}
                     height={size}
                     source={require('../../assets/EpiFocus.svg')}
@@ -95,13 +116,13 @@ const AppTabsScreen: React.FC = () => {
                 </View>
               )
             } else {
-              return (         <View >
-                  <SvgUri 
-                    width={size}
-                    height={size}
-                    source={require('../../assets/Epi.svg')}
-                  />
-                </View>
+              return (<View >
+                <SvgUri
+                  width={size}
+                  height={size}
+                  source={require('../../assets/Epi.svg')}
+                />
+              </View>
               )
             }
           }
@@ -117,9 +138,9 @@ const AppTabsScreen: React.FC = () => {
             if (focused) {
               return (
                 <View style={{ marginTop: -20 }} >
-                  <SvgUri 
-                    width={size*2}
-                    height={size*2}
+                  <SvgUri
+                    width={size * 2}
+                    height={size * 2}
                     source={require('../../assets/HomeFocus.svg')}
                   />
                 </View>
@@ -127,9 +148,9 @@ const AppTabsScreen: React.FC = () => {
             } else {
               return (
                 <View style={{ marginTop: -20 }}>
-                  <SvgUri 
-                    width={size*2}
-                    height={size*2}
+                  <SvgUri
+                    width={size * 2}
+                    height={size * 2}
                     source={require('../../assets/Home.svg')}
                   />
                 </View>
@@ -138,17 +159,17 @@ const AppTabsScreen: React.FC = () => {
           }
         }}
       />
-      <AppTabs.Screen 
-      name="Equipamento" 
-      component={Equipamento} 
-              options={{
+      <AppTabs.Screen
+        name="Equipamento"
+        component={Equipamento}
+        options={{
           headerTitle: () => (<Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Equipamento</Text>),
           headerTitleAlign: 'center',
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return (
                 <View  >
-                  <SvgUri 
+                  <SvgUri
                     width={size}
                     height={size}
                     source={require('../../assets/EquipamentoFocus.svg')}
@@ -158,7 +179,7 @@ const AppTabsScreen: React.FC = () => {
             } else {
               return (
                 <View >
-                  <SvgUri 
+                  <SvgUri
                     width={size}
                     height={size}
                     source={require('../../assets/Equipamento.svg')}
@@ -168,7 +189,7 @@ const AppTabsScreen: React.FC = () => {
             }
           }
         }}
-        />
+      />
     </AppTabs.Navigator>
   )
 }

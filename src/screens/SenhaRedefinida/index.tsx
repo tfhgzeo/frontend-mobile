@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View, } from "react-native";
+import { Text, TouchableOpacity, View,Image } from "react-native";
 import SvgUri from 'react-native-svg-uri';
 
 import { useNavigation } from '@react-navigation/native';
@@ -11,14 +11,15 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Input from "../../components/Input";
 
 
-const EsqueceuSenha: React.FC = () => {
-  const [matricula, setMatricula] = useState<string>()
+const SenhaRedefinida: React.FC = () => {
+  const [senha, setSenha] = useState<string>()
+  const [repitaSenha, setRepitaSenha] = useState<string>()
   const navigation = useNavigation<NativeStackNavigationProp<PropsStack>>();
   const size = 25
 
 
   const voltar = () => {
-    navigation.navigate('Login');
+    navigation.navigate('AlterarSenha');
   };
 
   return (
@@ -35,20 +36,20 @@ const EsqueceuSenha: React.FC = () => {
       />
       </TouchableOpacity>
       </View>
-      <View className="items-start mt-16">
-        <Text className="text-primary font-bold text-2xl mt-14">Resetar Senha</Text>
-        <Text className="text-subtitulo mt-2 mb-10" >Insira sua Matrícula para enviarmos um código vinculado ao seu e-mail.</Text>
-      </View>
-      <View className="mt-24">
-      <Input value={matricula} setValue={setMatricula} placeholder="Matrícula" />
+      <Image
+          source={require('../../../assets/Cadeado.png')}
+          style={{ width: size*6, height: size*6 }}
+        />
+      <View className="items-start w-full mt-12">
+        <Text className="text-primary font-bold text-4xl mt-4 w-full text-center">Senha Redefinida com sucesso!</Text>
       </View>
       <TouchableOpacity 
-      className="justify-center w-80 h-14 bg-primary rounded-full mt-2 items-center"
-      onPress={()=>{ navigation.navigate('EnviarCod')}}>
-        <Text className="text-white font-bold">Avançar</Text>
+      className="justify-center w-80 h-14 bg-primary rounded-full mt-6 items-center "
+      onPress={()=>{ navigation.navigate('Login')}}>
+        <Text className="text-white font-bold">Fazer Login</Text>
       </TouchableOpacity>
     </View>
   )
 }
 
-export default EsqueceuSenha
+export default SenhaRedefinida
