@@ -1,27 +1,35 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 
-interface MenuButtonProps {
-
-}
 
 const MenuButton: React.FC = () => {
+  const [filter,setFilter] = useState("mes3");
+
     return (
         <View className=" flex flex-row justify-around items-center w-11/12 h-12 mt-6 ">
-              <TouchableOpacity className=" p-3 justify-center items-center"  >
-                <Text className="text-text font-bold">OUT</Text>
-                <Text className="text-text">2024</Text>
+              <TouchableOpacity 
+              className={` ${filter =="mes1"?"bg-secondary":""} p-3 rounded-md justify-center items-center`}
+              onPress={() =>{setFilter("mes1")}}
+              >
+                <Text className={`${filter =="mes1"?"text-primary":"text-text"} font-bold`}>OUT</Text>
+                <Text className={`${filter =="mes1"?"text-primary":"text-text"}`}>2024</Text>
               
               </TouchableOpacity>
-              <TouchableOpacity className=" bg-secondary p-3 rounded-md justify-center items-center" >
-                <Text className="text-primary font-bold">NOV</Text>
-                <Text className="text-primary">2024</Text>
+              <TouchableOpacity 
+              className={` ${filter =="mes2"?"bg-secondary":""} p-3 rounded-md justify-center items-center`} 
+              onPress={() =>{setFilter("mes2")}}
+              >
+                <Text className={`${filter =="mes2"?"text-primary":"text-text"} font-bold`}>NOV</Text>
+                <Text className={`${filter =="mes2"?"text-primary":"text-text"}`}>2024</Text>
               
               </TouchableOpacity>
 
-              <TouchableOpacity className=" p-3 justify-center items-center " >
-                <Text className="text-text font-bold">DEZ</Text>
-                <Text className="text-text">2024</Text>
+              <TouchableOpacity 
+              className={` ${filter =="mes3"?"bg-secondary":""} p-3 rounded-md justify-center items-center`}
+              onPress={() =>{setFilter("mes3")}}
+              >
+                <Text className={`${filter =="mes3"?"text-primary":"text-text"} font-bold`}>DEZ</Text>
+                <Text className={`${filter =="mes3"?"text-primary":"text-text"}`}>2024</Text>
               
               </TouchableOpacity>
 

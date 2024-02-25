@@ -13,4 +13,8 @@ export type PropsStack  = PropsTab & {
     EsqueceuSenha:undefined,
     PrimeiroAcesso:undefined,
     Credencial:undefined,
+    Verificacao:undefined,
+    EnviarCod:undefined,
+    AlterarSenha:undefined,
+    SenhaRedefinida:undefined,
 }
