@@ -3,11 +3,11 @@ import { Text, View, TextInput,TouchableOpacity} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { PropsStack } from "../../types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { SimpleLineIcons } from '@expo/vector-icons';
 
 //COMPONENTS
 import DropDawnImages from "../../components/DropDawnImages";
 import DropDownTamanhos from "../../components/DropDownTamanhos";
-import SvgUri from 'react-native-svg-uri';
 
 const SolicitarEpi: React.FC = () => {
   const [epiSelecionado, setEpiSelecionado] = useState(null);
@@ -45,11 +45,7 @@ const SolicitarEpi: React.FC = () => {
       <TouchableOpacity className="flex-row items-center justify-center"
       onPress={foto}
       >
-        <SvgUri     
-                    width={25}
-                    height={25}
-                    source={require('../../../assets/camera.svg')}
-                  />
+  <SimpleLineIcons name="camera" size={25} color="#1E1685" />
                   <Text className="text-center text-primary font-bold ml-2">
                 Adicionar Imagem
         </Text>

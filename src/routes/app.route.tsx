@@ -1,5 +1,6 @@
 import React from "react";
-import SvgUri from 'react-native-svg-uri';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 // SCREENS
@@ -60,7 +61,7 @@ const AppRoutes: React.FC = () => {
         name="AlterarSenha"
         component={AlterarSenha}
       />
-            <AppStack.Screen
+      <AppStack.Screen
         name="Foto"
         component={Foto}
       />
@@ -81,12 +82,12 @@ const AppRoutes: React.FC = () => {
       <AppStack.Screen
         name="SolicitarEpi"
         component={SolicitarEpi}
-        options={{ headerTitle: "Solicitar EPI",headerShown: true }}
+        options={{ headerTitle: "Solicitar EPI", headerShown: true }}
       />
       <AppStack.Screen
         name="SolicitarEquipamento"
         component={SolicitarEquipamento}
-        options={{ headerTitle: "Solicitar Equipamento",headerShown: true }}
+        options={{ headerTitle: "Solicitar Equipamento", headerShown: true }}
       />
       {/* Adicione outras telas aqui */}
     </AppStack.Navigator>
@@ -113,20 +114,12 @@ const AppTabsScreen: React.FC = () => {
             if (focused) {
               return (
                 <View >
-                  <SvgUri
-                    width={size}
-                    height={size}
-                    source={require('../../assets/EpiFocus.svg')}
-                  />
+                  <MaterialCommunityIcons name="face-mask" size={size} color="#1E1685" />
                 </View>
               )
             } else {
               return (<View >
-                <SvgUri
-                  width={size}
-                  height={size}
-                  source={require('../../assets/Epi.svg')}
-                />
+                <MaterialCommunityIcons name="face-mask" size={size} color="#888" />
               </View>
               )
             }
@@ -142,22 +135,14 @@ const AppTabsScreen: React.FC = () => {
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return (
-                <View style={{ marginTop: -20 }} >
-                  <SvgUri
-                    width={size * 2}
-                    height={size * 2}
-                    source={require('../../assets/HomeFocus.svg')}
-                  />
+                <View >
+                  <FontAwesome name="file-text" size={size} color="#1E1685" />
                 </View>
               )
             } else {
               return (
-                <View style={{ marginTop: -20 }}>
-                  <SvgUri
-                    width={size * 2}
-                    height={size * 2}
-                    source={require('../../assets/Home.svg')}
-                  />
+                <View>
+                  <FontAwesome name="file-text-o" size={size} color="#888" />
                 </View>
               )
             }
@@ -174,21 +159,13 @@ const AppTabsScreen: React.FC = () => {
             if (focused) {
               return (
                 <View  >
-                  <SvgUri
-                    width={size}
-                    height={size}
-                    source={require('../../assets/EquipamentoFocus.svg')}
-                  />
+                  <MaterialCommunityIcons name="printer" size={size} color="#1E1685" />
                 </View>
               )
             } else {
               return (
                 <View >
-                  <SvgUri
-                    width={size}
-                    height={size}
-                    source={require('../../assets/Equipamento.svg')}
-                  />
+                  <MaterialCommunityIcons name="printer" size={size} color="#888" />
                 </View>
               )
             }

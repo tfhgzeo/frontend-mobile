@@ -5,8 +5,9 @@ import { Camera, CameraType } from 'expo-camera';
 import { useNavigation } from '@react-navigation/native';
 import { PropsStack } from "../../types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import Icon from "react-native-vector-icons/Feather";
+import BtnVoltar from "../BtnVoltar";
 
-import SvgUri from 'react-native-svg-uri';
 
 export default function Foto() {
   const camRef = useRef(null)
@@ -55,16 +56,7 @@ export default function Foto() {
     <View className="flex-1 justify-center">
       <Camera className="flex-1 items-center" type={type} ref={camRef}>
         <View className="absolute left-5 top-20">
-          <TouchableOpacity
-            className="bg-white p-2 rounded-full shadow-md shadow-black"
-            onPress={voltarEpi}
-          >
-            <SvgUri
-              width={25}
-              height={25}
-              source={require('../../../assets/BtnVoltar.svg')}
-            />
-          </TouchableOpacity>
+          <BtnVoltar page={"SolicitarEpi"} />
         </View>
         <View className="flex-1 flex-row justify-center items-center m-16 w-[70]">
           <TouchableOpacity className="flex-1 self-end rounded-full bg-red-600 border-4 border-white h-[70]"
@@ -89,19 +81,19 @@ export default function Foto() {
                     className="bg-white p-2 rounded-full shadow-md shadow-black"
                     onPress={voltarCamera}
                   >
-                    <SvgUri
-                      width={25}
-                      height={25}
-                      source={require('../../../assets/BtnVoltar.svg')}
+                    <Icon
+                      name="arrow-left"
+                      size={25}
+                      color={"#000"}
                     />
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={{ position: "absolute", display: 'flex', bottom: "10%", alignItems: 'center', justifyContent: 'center' }} onPress={salvarFoto}>
                   <Text style={{ backgroundColor: "#ffffff", width: 50, height: 50, borderRadius: 50, }}>
-                    <SvgUri
-                      width={50}
-                      height={50}
-                      source={require('../../../assets/check.svg')}
+                  <Icon
+                      name="check-circle"
+                      size={50}
+                      color={"#1E1685"}
                     /></Text>
                 </TouchableOpacity>
 
