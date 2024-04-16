@@ -1,7 +1,36 @@
 export type PropsTab = {
-    EPI: undefined;
-    Equipamento: undefined;
+    EPI: {
+        newEpi?:
+            | {
+                  nome: string;
+                  dataSolicitacao: string;
+                  quantidade: string;
+                  validade: string;
+                  imagem: string;
+                  tamanho: string;
+                  idCard: string;
+                  status: string;
+                  nomeDisplay: string;
+              }
+            | undefined;
+    };
+    Equipamento: {
+        newEquipamento?:
+            | {
+                  nome: string;
+                  dataSolicitacao: string;
+                  quantidade: string;
+                  validade: string;
+                  imagem: string;
+                  problema: string;
+                  idCard: string;
+                  status: string;
+                  nomeDisplay: string;
+              }
+            | undefined;
+    };
     Holerite: undefined;
+    CheckList: undefined;
 };
 
 export type PropsStack = PropsTab & {
@@ -17,6 +46,20 @@ export type PropsStack = PropsTab & {
     AlterarSenha: undefined;
     SenhaRedefinida: undefined;
     Foto: undefined;
+    ChecklistUsuario: undefined;
+
+};
+
+export type EpiDataType = {
+    nome: string;
+    dataSolicitacao: string;
+    quantidade: string;
+    validade: string;
+    imagem: string;
+    tamanho: string;
+    idCard: string;
+    status: string;
+    nomeDisplay: string;
 };
 
 export type RouteNames =
@@ -29,6 +72,6 @@ export type RouteNames =
     | "Credencial"
     | "Verificacao"
     | "EnviarCod"
-    | "AlterarSenha" // Substitua com suas rotas reais
+    | "AlterarSenha" 
     | "SenhaRedefinida"
-    | "Foto"; // Continue adicionando todas as rotas necessárias
+    | "Foto";
