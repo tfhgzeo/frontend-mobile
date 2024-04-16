@@ -16,14 +16,14 @@ import SvgUri from 'react-native-svg-uri';
 const SolicitarEquipamento: React.FC = () => {
   const [equipamentoSelecionado, setEquipamentoSelecionado] = useState(null);
 
-  const handleCountrySelect = (country) => {
+  const handleCountrySelect = (country: any) => {
     setEquipamentoSelecionado(country);
     // Faça o que for necessário com o valor selecionado na sua tela
   };
   const navigation = useNavigation<NativeStackNavigationProp<PropsStack>>();
 
   const cancelar = () => {
-    navigation.navigate('EPI');
+    navigation.navigate('Equipamento');
   };
 
 

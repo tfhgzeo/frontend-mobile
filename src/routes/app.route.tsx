@@ -16,7 +16,8 @@ import Verificacao from "../screens/Verificacao";
 import EnviarCod from "../screens/EnviarCod";
 import AlterarSenha from "../screens/AlterarSenha";
 import SenhaRedefinida from "../screens/SenhaRedefinida";
-
+// COMPONETS
+import Foto from "../components/Foto";
 
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -58,6 +59,10 @@ const AppRoutes: React.FC = () => {
       <AppStack.Screen
         name="AlterarSenha"
         component={AlterarSenha}
+      />
+            <AppStack.Screen
+        name="Foto"
+        component={Foto}
       />
       <AppStack.Screen
         name="SenhaRedefinida"

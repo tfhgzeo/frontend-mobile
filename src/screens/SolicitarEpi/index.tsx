@@ -20,7 +20,9 @@ const SolicitarEpi: React.FC = () => {
   const cancelar = () => {
     navigation.navigate('EPI');
   };
-
+  const foto = () => {
+    navigation.navigate('Foto');
+  };
 
   return (
     <View className='flex-1 mt-4 items-center'>
@@ -28,7 +30,7 @@ const SolicitarEpi: React.FC = () => {
         <Text >Informe os detalhes do EPI</Text>
       </View>
       <DropDawnImages screen="SolicitaEpi" onSelect={handleCountrySelect}/>
-      <DropDownTamanhos/>
+      <DropDownTamanhos epi={epiSelecionado}/>
       <View className="m-3 w-11/12 p-3 border border-primary rounded-md bg-white ">
       <TextInput 
         style={{textAlignVertical:'top'}}
@@ -40,7 +42,9 @@ const SolicitarEpi: React.FC = () => {
       />
       </View>
       <View className="mb-3 bg-white p-4 w-11/12 border border-primary rounded-lg ">
-      <TouchableOpacity className="flex-row items-center justify-center">
+      <TouchableOpacity className="flex-row items-center justify-center"
+      onPress={foto}
+      >
         <SvgUri     
                     width={25}
                     height={25}
