@@ -1,25 +1,30 @@
 import React from "react";
-import { Text, View, ScrollView } from "react-native";
-import { useNavigation } from '@react-navigation/native';
-import { PropsStack } from "../../types";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import * as Progress from 'react-native-progress';
 import UserAvatar from 'react-native-user-avatar';
-import DropDownChekcList from "../../components/DropDownChekcList";
+import DropDownCheckList from "../../components/DropDownCheckList";
 
-//COMPONENTS
-import EpiCard from "../../components/EpiCard"
 
 const ChecklistUsuario: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<PropsStack>>();
 
-  const solicitarEpi = () => {
-    navigation.navigate('SolicitarEpi');
-  };
+  const epis = [
+    { key: 'camisa', name: 'Camisa' },
+    { key: 'calca', name: 'Calça' },
+    { key: 'bota', name: 'Bota' },
+    { key: 'luva', name: 'Luva' },
+    { key: 'smartphone', name: 'Smartphone' },
+    { key: 'impressora', name: 'Impressora' },
+    { key: 'espelho', name: 'Espelho' },
+  ];
+  const renderEpi = ({ item }) => (
+    <View style={{ marginBottom: 10 }}>
+      <DropDownCheckList epi={item.key} />
+    </View>
+  );
 
   return (
 
-    <View className='flex-1  '>
+    <View className='flex-1'>
       <View className='p-6  bg-white '>
 
         <View className='flex-row mb-4 mt-14'>
@@ -34,39 +39,27 @@ const ChecklistUsuario: React.FC = () => {
           <Progress.Bar progress={0.13} width={300} height={20} color="#00266F" />
         </View>
       </View>
-      <View className="items-center  w-full ">
+      <View className="items-center  w-full h-2/4 ">
         <View className="w-full items-center h-10 p-2 ">
           <Text className="text-xl text-center ">
             Confirme o estado de seus EPI's
           </Text>
         </View>
-        <ScrollView>
-          <View className="">
-            <DropDownChekcList epi='camisa' />
-          </View>
-          <View className="">
-            <DropDownChekcList epi='calca' />
-          </View>
-          <View className="">
-            <DropDownChekcList epi='bota' />
-          </View>
-          <View className="">
-            <DropDownChekcList epi='luva' />
-          </View>
-          <View className="">
-            <DropDownChekcList epi='smartphone' />
-          </View>
-          <View className="">
-            <DropDownChekcList epi='impressora' />
-          </View>
-          <View className="">
-            <DropDownChekcList epi='espelho' />
-          </View>
+        <FlatList
+          data={epis}
+          renderItem={renderEpi}
+          keyExtractor={item => item.key}
+          contentContainerStyle={{ paddingBottom: 20,height: 'auto' }}
+        />
+      </View>
+      <View className="items-center flex-row justify-around mt-10">
+      <TouchableOpacity className="bg-error p-4 w-2/5 rounded-lg">
+        <Text className="text-center text-white">Cancelar</Text>
+      </TouchableOpacity>
 
-
-
-
-        </ScrollView>
+      <TouchableOpacity className="bg-primary p-4 w-2/5 rounded-lg">
+        <Text className="text-center text-white">Salvar</Text>
+      </TouchableOpacity>
       </View>
     </View>
 
