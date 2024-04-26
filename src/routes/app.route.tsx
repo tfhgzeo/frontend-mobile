@@ -1,5 +1,11 @@
 import React from "react";
-import SvgUri from 'react-native-svg-uri';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, Text } from "react-native";
+import { PropsStack, PropsTab } from "../types";
 
 
 // SCREENS
@@ -16,13 +22,13 @@ import Verificacao from "../screens/Verificacao";
 import EnviarCod from "../screens/EnviarCod";
 import AlterarSenha from "../screens/AlterarSenha";
 import SenhaRedefinida from "../screens/SenhaRedefinida";
+import CheckList from "../screens/CheckList";
+import ChecklistUsuario from "../screens/ChecklistUsuario";
 
 
+// COMPONETS
+import Foto from "../components/Foto";
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Text } from "react-native";
-import { PropsStack, PropsTab } from "../types";
 
 const AppTabs = createBottomTabNavigator<PropsTab>();
 const AppStack = createNativeStackNavigator<PropsStack>();
@@ -60,6 +66,10 @@ const AppRoutes: React.FC = () => {
         component={AlterarSenha}
       />
       <AppStack.Screen
+        name="Foto"
+        component={Foto}
+      />
+      <AppStack.Screen
         name="SenhaRedefinida"
         component={SenhaRedefinida}
       />
@@ -74,14 +84,18 @@ const AppRoutes: React.FC = () => {
         component={Login}
       />
       <AppStack.Screen
+        name="ChecklistUsuario"
+        component={ChecklistUsuario}
+      />
+      <AppStack.Screen
         name="SolicitarEpi"
         component={SolicitarEpi}
-        options={{ headerTitle: "Solicitar EPI",headerShown: true }}
+        options={{ headerTitle: "Solicitar EPI", headerShown: true }}
       />
       <AppStack.Screen
         name="SolicitarEquipamento"
         component={SolicitarEquipamento}
-        options={{ headerTitle: "Solicitar Equipamento",headerShown: true }}
+        options={{ headerTitle: "Solicitar Equipamento", headerShown: true }}
       />
       {/* Adicione outras telas aqui */}
     </AppStack.Navigator>
@@ -108,20 +122,12 @@ const AppTabsScreen: React.FC = () => {
             if (focused) {
               return (
                 <View >
-                  <SvgUri
-                    width={size}
-                    height={size}
-                    source={require('../../assets/EpiFocus.svg')}
-                  />
+                  <MaterialCommunityIcons name="face-mask" size={size} color="#1E1685" />
                 </View>
               )
             } else {
               return (<View >
-                <SvgUri
-                  width={size}
-                  height={size}
-                  source={require('../../assets/Epi.svg')}
-                />
+                <MaterialCommunityIcons name="face-mask" size={size} color="#888" />
               </View>
               )
             }
@@ -137,22 +143,14 @@ const AppTabsScreen: React.FC = () => {
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return (
-                <View style={{ marginTop: -20 }} >
-                  <SvgUri
-                    width={size * 2}
-                    height={size * 2}
-                    source={require('../../assets/HomeFocus.svg')}
-                  />
+                <View >
+                  <FontAwesome name="file-text" size={size} color="#1E1685" />
                 </View>
               )
             } else {
               return (
-                <View style={{ marginTop: -20 }}>
-                  <SvgUri
-                    width={size * 2}
-                    height={size * 2}
-                    source={require('../../assets/Home.svg')}
-                  />
+                <View>
+                  <FontAwesome name="file-text-o" size={size} color="#888" />
                 </View>
               )
             }
@@ -169,21 +167,36 @@ const AppTabsScreen: React.FC = () => {
             if (focused) {
               return (
                 <View  >
-                  <SvgUri
-                    width={size}
-                    height={size}
-                    source={require('../../assets/EquipamentoFocus.svg')}
-                  />
+                  <MaterialCommunityIcons name="printer" size={size} color="#1E1685" />
                 </View>
               )
             } else {
               return (
                 <View >
-                  <SvgUri
-                    width={size}
-                    height={size}
-                    source={require('../../assets/Equipamento.svg')}
-                  />
+                  <MaterialCommunityIcons name="printer" size={size} color="#888" />
+                </View>
+              )
+            }
+          }
+        }}
+      />
+      <AppTabs.Screen
+        name="CheckList"
+        component={CheckList}
+        options={{
+          headerTitle: () => (<Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>CheckList</Text>),
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused) {
+              return (
+                <View  >
+<MaterialCommunityIcons name="file-check-outline" size={size} color="#1E1685" />
+                </View>
+              )
+            } else {
+              return (
+                <View >
+<MaterialCommunityIcons name="file-check-outline" size={size} color="#888" />
                 </View>
               )
             }

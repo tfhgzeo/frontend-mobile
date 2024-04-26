@@ -34,7 +34,48 @@ const data = [
   { label: '55', value: '27' },
 ];
 
-const DropDownTamanhos = () => {
+const botina = [
+  { label: '34', value: '34' },
+  { label: '35', value: '35' },
+  { label: '36', value: '36' },
+  { label: '37', value: '37' },
+  { label: '38', value: '38' },
+  { label: '39', value: '39' },
+  { label: '40', value: '40' },
+  { label: '41', value: '41' },
+  { label: '42', value: '42' },
+  { label: '43', value: '43' },
+  { label: '44', value: '44' },
+  { label: '45', value: '45' },
+  { label: '46', value: '46' },
+  { label: '47', value: '47' },
+  { label: '48', value: '48' },
+  { label: '49', value: '49' },
+  { label: '50', value: '50' },
+  { label: '51', value: '51' },
+  { label: '52', value: '52' },
+  { label: '53', value: '53' },
+  { label: '54', value: '54' },
+  { label: '55', value: '55' },
+]
+
+const capa = [
+  { label: 'P', value: 'P' },
+  { label: 'M', value: 'M' },
+  { label: 'G', value: 'G' },
+  { label: 'GG', value: 'GG' },
+  { label: 'XL', value: 'XL' },
+]
+
+const protetor = [
+  { label: '-', value: '-' },
+]
+
+const alicate = [
+  { label: '-', value: '-' },
+]
+
+const DropDownTamanhos = ({epi}) => {
   const [value, setValue] = useState(null);
 
   return (
@@ -44,7 +85,7 @@ const DropDownTamanhos = () => {
       selectedTextStyle={styles.selectedTextStyle}
       inputSearchStyle={styles.inputSearchStyle}
       iconStyle={styles.iconStyle}
-      data={data}
+      data={epi === "Botina" ? botina : epi === "Capa de Chuva" ? capa : epi === "Protetor Solar" ? protetor : alicate  }
       search
       maxHeight={300}
       labelField="label"

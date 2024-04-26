@@ -3,27 +3,29 @@ import { Text, View, TextInput,TouchableOpacity} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { PropsStack } from "../../types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { SimpleLineIcons } from '@expo/vector-icons';
 
 
 
 //COMPONENTS
 import DropDawnImages from "../../components/DropDawnImages";
 import DropDownProblemas from "../../components/DropDownProblemas";
-import SvgUri from 'react-native-svg-uri';
+
+
 
 
 
 const SolicitarEquipamento: React.FC = () => {
   const [equipamentoSelecionado, setEquipamentoSelecionado] = useState(null);
 
-  const handleCountrySelect = (country) => {
+  const handleCountrySelect = (country: any) => {
     setEquipamentoSelecionado(country);
     // Faça o que for necessário com o valor selecionado na sua tela
   };
   const navigation = useNavigation<NativeStackNavigationProp<PropsStack>>();
 
   const cancelar = () => {
-    navigation.navigate('EPI');
+    navigation.navigate('Equipamento');
   };
 
 
@@ -53,11 +55,7 @@ const SolicitarEquipamento: React.FC = () => {
       </View>
       <View className="mb-6 bg-white p-3 w-11/12 border border-primary rounded-lg ">
       <TouchableOpacity className="flex-row items-center justify-center ">
-        <SvgUri     
-                    width={25}
-                    height={25}
-                    source={require('../../../assets/camera.svg')}
-                  />
+      <SimpleLineIcons name="camera" size={25} color="#1E1685" />
                   <Text className="text-center text-primary font-bold ml-2">
                 Gravar video
         </Text>

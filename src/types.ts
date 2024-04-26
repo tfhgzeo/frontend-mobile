@@ -1,20 +1,77 @@
 export type PropsTab = {
-  EPI: undefined,
-  Equipamento: undefined,
-  Holerite:undefined,
+    EPI: {
+        newEpi?:
+            | {
+                  nome: string;
+                  dataSolicitacao: string;
+                  quantidade: string;
+                  validade: string;
+                  imagem: string;
+                  tamanho: string;
+                  idCard: string;
+                  status: string;
+                  nomeDisplay: string;
+              }
+            | undefined;
+    };
+    Equipamento: {
+        newEquipamento?:
+            | {
+                  nome: string;
+                  dataSolicitacao: string;
+                  quantidade: string;
+                  validade: string;
+                  imagem: string;
+                  problema: string;
+                  idCard: string;
+                  status: string;
+                  nomeDisplay: string;
+              }
+            | undefined;
+    };
+    Holerite: undefined;
+    CheckList: undefined;
+};
 
-}
+export type PropsStack = PropsTab & {
+    SolicitarEpi: undefined;
+    SolicitarEquipamento: undefined;
+    HoleriteTabs: undefined;
+    Login: undefined;
+    EsqueceuSenha: undefined;
+    PrimeiroAcesso: undefined;
+    Credencial: undefined;
+    Verificacao: undefined;
+    EnviarCod: undefined;
+    AlterarSenha: undefined;
+    SenhaRedefinida: undefined;
+    Foto: undefined;
+    ChecklistUsuario: undefined;
 
-export type PropsStack  = PropsTab & {
-    SolicitarEpi: undefined,
-    SolicitarEquipamento: undefined,
-    HoleriteTabs: undefined,
-    Login: undefined,
-    EsqueceuSenha:undefined,
-    PrimeiroAcesso:undefined,
-    Credencial:undefined,
-    Verificacao:undefined,
-    EnviarCod:undefined,
-    AlterarSenha:undefined,
-    SenhaRedefinida:undefined,
-}
+};
+
+export type EpiDataType = {
+    nome: string;
+    dataSolicitacao: string;
+    quantidade: string;
+    validade: string;
+    imagem: string;
+    tamanho: string;
+    idCard: string;
+    status: string;
+    nomeDisplay: string;
+};
+
+export type RouteNames =
+    | "SolicitarEpi"
+    | "SolicitarEquipamento"
+    | "HoleriteTabs"
+    | "Login"
+    | "EsqueceuSenha"
+    | "PrimeiroAcesso"
+    | "Credencial"
+    | "Verificacao"
+    | "EnviarCod"
+    | "AlterarSenha" 
+    | "SenhaRedefinida"
+    | "Foto";
