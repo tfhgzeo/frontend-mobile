@@ -8,9 +8,11 @@ import Icon from "react-native-vector-icons/Feather";
 const DropDownCheckList = ({ epi }) => {
   const [value, setValue] = useState('0');
   const [open, setOpen] = useState(false)
+  const [justificativa, setJustificativa] = useState()
   useEffect(() => {
     if (value === '3') {
       setOpen(true);
+      
     }
   }, [value])
   const data = [
@@ -112,7 +114,8 @@ const DropDownCheckList = ({ epi }) => {
         transparent={true}
         visible={open}
       >
-        <View className='flex-1 justify-center items-center bg-slate-600 bg-opacity-30'>
+        <View 
+        style={{flex:1, justifyContent:'center',alignItems:'center',  backgroundColor: 'rgba(52, 52, 52, 0.8)'} }     >
         <View className='justify-center items-center bg-white w-3/4 h-2/4'>
           <TouchableOpacity
             className="bg-white p-2 rounded-full shadow-md shadow-black absolute left-5 top-10"
@@ -132,6 +135,7 @@ const DropDownCheckList = ({ epi }) => {
         numberOfLines={4} 
         placeholder={`Informe por que não tem ${epi}`} 
         placeholderTextColor="#000"
+        onChangeText={()=>setJustificativa}
       />
       </View>
       <View className=" mb-2 bg-primary p-4 w-11/12 rounded-lg">
