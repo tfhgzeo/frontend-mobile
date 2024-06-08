@@ -26,5 +26,8 @@ jobs:
       - name: 📦 Install dependencies
         run: yarn install
 
+      - name: Init Eas
+        run: eas init
+
       - name: 🚀 Create update
         run: eas build -p android --profile preview --non-interactive
