@@ -29,4 +29,6 @@ jobs:
         run: yarn install
 
       - name: Build App
+        env:
+          EXPO_PUBLIC_API_URL: ${{ secrets.API_URL }}
         run: eas build -p android --profile preview
